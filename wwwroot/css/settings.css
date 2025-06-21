@@ -1,0 +1,67 @@
+﻿/* Settings Page Styles */
+
+.settings-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px; /* Adjusted margin */
+    font-size: 1.1em;
+    color: #333;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee; /* Separator line */
+}
+
+.theme-toggle {
+    width: 55px; /* Adjusted width */
+    height: 30px; /* Adjusted height */
+    background-color: #ccc;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .theme-toggle::before {
+        content: '';
+        position: absolute;
+        top: 3px; /* Adjusted position */
+        left: 3px; /* Adjusted position */
+        width: 24px; /* Adjusted size */
+        height: 24px; /* Adjusted size */
+        background-color: #fff;
+        border-radius: 50%;
+        transition: left 0.2s ease;
+    }
+    /* Example for toggled state */
+
+    .theme-toggle.active {
+        background-color: #ff7f50; /* Orange background when active */
+    }
+
+        .theme-toggle.active::before {
+            left: 28px; /* Move the circle to the right */
+        }
+
+.settings-links {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    .settings-links a {
+        color: #333;
+        text-decoration: none;
+        font-size: 1.1em; /* Slightly larger font */
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        transition: color 0.2s ease;
+    }
+
+        .settings-links a:last-child {
+            border-bottom: none;
+        }
+
+        .settings-links a:hover {
+            color: #ff7f50;
+        }

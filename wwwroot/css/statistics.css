@@ -1,0 +1,33 @@
+﻿/* Statistics Page Styles */
+
+.statistics-charts {
+    margin-bottom: 40px; /* Increased margin */
+}
+
+.chart-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px; /* Increased margin between rows */
+    gap: 20px; /* Add gap between chart placeholders in a row */
+}
+
+.bar-chart-placeholder {
+    width: 48%; /* Adjusted width for spacing */
+    height: 220px; /* Increased height */
+    background-color: #e0e0e0; /* Placeholder background */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Add shadow */
+}
+
+.pie-chart-placeholder {
+    width: 160px; /* Adjusted size */
+    height: 160px; /* Adjusted size */
+    border-radius: 50%;
+    background-color: #e0e0e0; /* Placeholder background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em; /* Slightly larger font */
+    color: #777;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Add shadow */
+}

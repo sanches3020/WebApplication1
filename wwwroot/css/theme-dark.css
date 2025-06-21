@@ -1,0 +1,122 @@
+﻿/* Dark Theme Styles */
+
+body.dark-theme {
+    background-color: #121212; /* Very dark background */
+    color: #e0e0e0; /* Light grey text */
+}
+
+    body.dark-theme .login-container, body.dark-theme .content {
+        background-color: #1e1e1e; /* Darker background for containers */
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* Lighter shadow for dark theme */
+    }
+
+    body.dark-theme h1, body.dark-theme h2 {
+        color: #e0e0e0; /* Light text for headings */
+    }
+
+    body.dark-theme input[type="text"], body.dark-theme input[type="password"], body.dark-theme input[type="email"] {
+        background-color: #333;
+        color: #e0e0e0;
+        border-color: #555;
+    }
+
+    body.dark-theme .sidebar {
+        background-color: #0a0a0a; /* Even darker sidebar */
+        color: #e0e0e0;
+    }
+
+    body.dark-theme .sidebar-menu a {
+        color: #e0e0e0;
+    }
+
+        body.dark-theme .sidebar-menu a:hover {
+            background-color: #333;
+        }
+
+        body.dark-theme .sidebar-menu a.active {
+            background-color: #ff7f50; /* Keep accent color */
+            color: white;
+        }
+
+    body.dark-theme .account-info .account-name, body.dark-theme .account-info .account-email {
+        color: #e0e0e0;
+    }
+
+    body.dark-theme .calendar-header, body.dark-theme .calendar-header button, body.dark-theme .calendar-weekdays, body.dark-theme .calendar-days div {
+        color: #e0e0e0;
+    }
+
+        body.dark-theme .calendar-days div.other-month {
+            color: #888;
+        }
+
+        body.dark-theme .calendar-days div:hover {
+            background-color: #333;
+        }
+
+    body.dark-theme .notes-search input[type="text"] {
+        background-color: #333;
+        color: #e0e0e0;
+        border-color: #555;
+    }
+
+    body.dark-theme .notes-search .search-button {
+        background-color: #555;
+        color: #e0e0e0;
+        border-color: #555;
+    }
+
+        body.dark-theme .notes-search .search-button:hover {
+            background-color: #777;
+        }
+
+    body.dark-theme .note-card {
+        background-color: #282828;
+        border-color: #555;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+    }
+
+        body.dark-theme .note-card:hover {
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.08);
+        }
+
+    body.dark-theme .emotions-grid {
+        background-color: #282828;
+        box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
+    }
+
+    body.dark-theme .emotion-item:hover {
+        background-color: #333;
+    }
+
+    body.dark-theme .statistics-charts .bar-chart-placeholder, body.dark-theme .statistics-charts .pie-chart-placeholder {
+        background-color: #333;
+    }
+
+    body.dark-theme .settings-option, body.dark-theme .settings-links a {
+        color: #e0e0e0;
+    }
+
+    body.dark-theme .settings-option {
+        border-bottom-color: #555;
+    }
+
+    body.dark-theme .settings-links a {
+        border-bottom-color: #555;
+    }
+
+        body.dark-theme .settings-links a:hover {
+            color: #ff7f50; /* Keep accent color */
+        }
+
+    body.dark-theme .theme-toggle {
+        background-color: #555;
+    }
+
+        body.dark-theme .theme-toggle.active {
+            background-color: #ff7f50;
+        }
+
+        body.dark-theme .theme-toggle::before {
+            background-color: #e0e0e0; /* Lighter handle in dark mode */
+        }

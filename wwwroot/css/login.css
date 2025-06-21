@@ -1,0 +1,68 @@
+﻿.login-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+    .logo .circle {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        margin: 0 3px;
+    }
+
+    .logo .red {
+        background-color: #ff6b6b;
+    }
+
+    .logo .green {
+        background-color: #60d394;
+    }
+
+    .logo .yellow {
+        background-color: #ffd97d;
+    }
+
+    .logo .blue {
+        background-color: #4ecdc4;
+    }
+
+h1 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #ff7f50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+    button:hover {
+        background-color: #ff6347;
+    }
