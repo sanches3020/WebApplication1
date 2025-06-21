@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/statistics.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/theme-dark.css" asp-append-version="true" />
+}
+
+<nav class="sidebar">
+    <div class="sidebar-user">
+        <img src="~/images/default-avatar.png" alt="User Avatar" class="user-avatar" />
+        <div class="user-info">
+            <div class="user-email">@Context.Session.GetString("UserEmail")</div>
+        </div>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a asp-controller="Calendar" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Calendar" ? "active" : "")">Календарь</a></li>
+        <li><a asp-controller="Notes" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Notes" ? "active" : "")">Заметки</a></li>
+        <li><a asp-controller="Statistics" asp-action="Index" class="active">Статистика</a></li>
+        <li><a asp-controller="Settings" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"]?.ToString() == "Settings" ? "active" : "")">Настройки</a></li>
+    </ul>
+</nav>
+
+<main class="content">
+    <h1>Статистика ваших эмоций</h1>
+
+    <div class="date-picker">
+        <label for="startDate">Начальная дата:</label>
+        <input type="date" id="startDate" />
+        <label for="endDate">Конечная дата:</label>
+        <input type="date" id="endDate" />
+    </div>
+
+    <div class="chart-controls">
+        <label for="chartTypeSelector">Тип графика:</label>
+        <select id="chartTypeSelector">
+            <option value="bar">📊 Столбчатая</option>
+            <option value="line">📈 Линейная</option>
+            <option value="pie">🥧 Круговая</option>
+        </select>
+    </div>
+
+    <div class="statistics-charts">
+        <canvas id="moodChart" width="800" height="400"></canvas>
+    </div>
+</main>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/statistic.js" asp-append-version="true"></script>
+}

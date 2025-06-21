@@ -1,0 +1,56 @@
+﻿@model MoodMapper.ViewModels.RegisterViewModel
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="~/css/base.css" />
+    <link rel="stylesheet" href="~/css/register.css" />
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <div class="circle red"></div>
+            <div class="circle green"></div>
+            <div class="circle yellow"></div>
+            <div class="circle blue"></div>
+        </div>
+
+        <h1>СОЗДАЙТЕ АККАУНТ</h1>
+
+        <form asp-controller="Account" asp-action="Register" method="post">
+            <div class="form-group">
+                <input type="text" asp-for="Email" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="password" asp-for="Password" placeholder="Пароль" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="password" asp-for="ConfirmPassword" placeholder="Повторите пароль" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+        </form>
+
+        <a href="@Url.Action("Login", "Account")" class="btn btn-primary">
+            ЕСТЬ АККАУНТ? ПРИСОЕДИНИСЬ
+        </a>
+
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-info">@TempData["Message"]</div>
+        }
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

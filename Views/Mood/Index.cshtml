@@ -1,0 +1,111 @@
+﻿@model CalendarViewModel
+@{
+    Layout = null;
+    var today = Model.TodayDay;
+    var prev = new DateTime(Model.Year, Model.Month, 1).AddMonths(-1);
+    var next = new DateTime(Model.Year, Model.Month, 1).AddMonths(1);
+    var startShift = Model.FirstDayOfWeek == 0 ? 6 : Model.FirstDayOfWeek - 1;
+    var totalCells = Model.DaysInMonth + startShift;
+    var culture = new System.Globalization.CultureInfo("ru-RU");
+    string monthName = culture.DateTimeFormat.GetMonthName(Model.Month);
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>MoodMapper – Календарь</title>
+    <
+    <link rel="stylesheet" href="~/css/base.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/calendar.css" />
+    <link rel="stylesheet" href="~/css/theme-dark.css" /> 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body data-year="@Model.Year" data-month="@Model.Month">
+
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-user">
+                <img src="@Url.Content("~/images/default-avatar.png")" alt="User Avatar" class="user-avatar" />
+                <div class="user-info">
+                    <div class="user-name">@Context.Session.GetString("UserEmail")</div>
+                    <div class="user-email">@Context.Session.GetString("UserEmail")</div>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a asp-controller="Mood" asp-action="Index" class="active">Главное</a></li>
+                <li><a asp-controller="Notes" asp-action="Index">Заметки</a></li>
+                <li><a asp-controller="Statistics" asp-action="Index">Статистика</a></li>
+                <li><a asp-controller="Settings" asp-action="Index">Настройки</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <div class="calendar-header">
+                <a asp-action="Index" asp-route-year="@prev.Year" asp-route-month="@prev.Month" class="month-nav">&lt;</a>
+                <div class="current-month">@monthName @Model.Year</div>
+                <a asp-action="Index" asp-route-year="@next.Year" asp-route-month="@next.Month" class="month-nav">&gt;</a>
+            </div>
+
+            <div class="calendar-weekdays">
+                <div>ПН</div><div>ВТ</div><div>СР</div><div>ЧТ</div><div>ПТ</div><div>СБ</div><div>ВС</div>
+            </div>
+
+            <div class="calendar-days">
+                @{
+                    int dayCounter = 1;
+                    for (int i = 0; i < totalCells; i++)
+                    {
+                        if (i < startShift)
+                        {
+                            <div class="calendar-day disabled other-month"></div>
+                        }
+                        else
+                        {
+                            var isFuture = (Model.Month == DateTime.Today.Month && Model.Year == DateTime.Today.Year && dayCounter > today);
+                            var emoji = Model.SavedEmotions.ContainsKey(dayCounter) ? Model.SavedEmotions[dayCounter] : null;
+                            string css = isFuture ? "calendar-day disabled" : "calendar-day";
+                            if (dayCounter == today) css += " today";
+
+                            <div class="@css" data-day="@dayCounter">
+                                @dayCounter
+                                @if (emoji != null)
+                                {
+                                    <span class="calendar-emoji">@emoji</span>
+                                }
+                            </div>
+                            dayCounter++;
+                        }
+                    }
+                }
+            </div>
+        </main>
+
+        <!-- Модальное окно -->
+        <div class="modal-overlay" style="display: none;">
+            <div class="modal-window">
+                <button class="modal-close">&times;</button>
+                <h3>Выберите эмоции для <span id="selected-date">...</span></h3>
+                <div class="emotions-grid">
+                    <div class="emotion-item">😊</div><div class="emotion-item">😂</div>
+                    <div class="emotion-item">😍</div><div class="emotion-item">🥳</div>
+                    <div class="emotion-item">😢</div><div class="emotion-item">😭</div>
+                    <div class="emotion-item">😡</div><div class="emotion-item">😠</div>
+                    <div class="emotion-item">🤔</div><div class="emotion-item">😴</div>
+                    <div class="emotion-item">🤩</div><div class="emotion-item">🤢</div>
+                    <div class="emotion-item">😱</div><div class="emotion-item">🤒</div>
+                    <div class="emotion-item">😇</div><div class="emotion-item">😈</div>
+                    <div class="emotion-item">🤡</div><div class="emotion-item">👻</div>
+                </div>
+                <button class="save-day-emotions">СОХРАНИТЬ ЭМОЦИИ</button>
+            </div> 
+        </div>
+        @section Scripts {
+            <script src="~/js/calendar.js"></script>
+        }
+    </body>
+    </html>
+
+

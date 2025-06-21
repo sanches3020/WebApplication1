@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+    var userEmail = Context.Session.GetString("UserEmail");
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Аккаунт</title>
+    <link rel="stylesheet" href="~/css/base.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/account.css" />
+    <link rel="stylesheet" href="~/css/theme-dark.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-user">
+                <img src="@Url.Content("~/images/default-avatar.png")" alt="User Avatar" class="user-avatar" />
+                <div class="user-info">
+                    <div class="user-email">@userEmail</div>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a asp-controller="Mood" asp-action="Index">Календарь</a></li>
+                <li><a asp-controller="Notes" asp-action="Index">Заметки</a></li>
+                <li><a asp-controller="Statistics" asp-action="Index">Статистика</a></li>
+                <li><a asp-controller="Settings" asp-action="Index">Настройки</a></li>
+                <li><a asp-controller="Account" asp-action="Index" class="active">Аккаунт</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <h2>АККАУНТ</h2>
+
+            <form asp-action="UpdateProfile" asp-controller="Account" method="post" enctype="multipart/form-data" class="account-form">
+                <label>Заменить аватар:</label>
+                <input type="file" name="avatarFile" accept="image/*" />
+
+                <label>Изменить email:</label>
+                <input type="email" name="newEmail" placeholder="example@email.com" value="@userEmail" />
+
+                <button type="submit">СОХРАНИТЬ ПРОФИЛЬ</button>
+            </form>
+
+            <hr />
+
+            <form asp-action="ChangePassword" asp-controller="Account" method="post" class="password-form">
+                <label>Старый пароль:</label>
+                <input type="password" name="oldPassword" required />
+
+                <label>Новый пароль:</label>
+                <input type="password" name="newPassword" required />
+
+                <label>Повторите новый пароль:</label>
+                <input type="password" name="confirmPassword" required />
+
+                <button type="submit">ИЗМЕНИТЬ ПАРОЛЬ</button>
+            </form> 
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Заметки</title>
+    <link rel="stylesheet" href="~/css/base.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/notes.css" />
+    <link rel="stylesheet" href="~/css/theme-dark.css" />
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="sidebar-user">
+                <img src="@Url.Content("~/images/default-avatar.png")" alt="User Avatar" class="user-avatar" />
+                <div class="user-info">
+                    <div class="user-name">@Context.Session.GetString("UserName")</div>
+                    <div class="user-email">@Context.Session.GetString("UserEmail")</div>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a asp-controller="Mood" asp-action="Index">Календарь</a></li>
+                <li><a asp-controller="Notes" asp-action="Index" class="active">Заметки</a></li>
+                <li><a asp-controller="Statistics" asp-action="Index">Статистика</a></li>
+                <li><a asp-controller="Settings" asp-action="Index">Настройки</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <h2>ЗАМЕТКИ</h2>
+
+            <div class="notes-search">
+                <input type="text" id="noteSearch" placeholder="Поиск" />
+                <button class="search-button">🔍</button>
+            </div>
+
+            <div class="notes-list" id="notesContainer">
+                @* карточки будут добавлены через JS *@
+            </div>
+
+            <button class="add-note-button" id="addNote">Добавить запись</button>
+            <button class="save-button" id="saveNotes">СОХРАНИТЬ</button>
+        </main>
+    </div>
+    @section Scripts {
+        <script src="~/js/notes.js"></script>
+    }
+    </body>
+    </html>
